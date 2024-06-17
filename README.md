@@ -1,25 +1,99 @@
 # Tree-Convert-Java-Task
-Даден е текстов файл с данни описващи дървовидна структура. 
-Всеки ред от файла описва един връх от дървото. 
-Всеки връх на дървото е номериран с цяло число, като няма два върха с един и същ номер.
 
-Формата на реда е: <номер на върха>, <номер на родителския връх>, <служебна информация>.
+The Structure of the Project
 
-Корена на дървото е с номер 1 (едно) и също фигурира във файла.
+Overview
+This project reads a tree structure from a text file, processes the data to rebuild the tree,
+identifies special nodes based on specific conditions, and writes the results to an output file.
+The project also includes detailed logging to aid in debugging and verification of the tree structure.
 
-Входния тестов файл е в проекта:src/main/resources/treeData.txt.
+Requirements
+ - Java 17 or higher
+ - Logging library (java.util.logging)
 
-На база на посочените данни са създадени подходящи класове и е възстановена дървовидната структура.
+project
+│
+├── src
+│   └── main
+│       ├── java
+│       │   ├── TreeNode.java
+│       │   ├── Tree.java
+│       │   ├── TreeStructure.java
+│       │   └── Main.java
+│       └── resources
+│           ├── treeData.txt
+│           └── output.txt
+│
+└── README.md
+└── output.txt
+└── theTask.txt
 
-В отделен текстов файл (src/main/resources/output.txt) 
-е изведен пълния списък с номера на върхове на полученото дърво, 
-които отговарят на следното условие: 
-имат поне един връх-наследник и нито един от върховете наследници няма свой върхове-наследници.
 
-На всеки ред от текстовия файл изведете точно един връх, отговавящ на посочените условия.
+Classes:
 
-Формата на изходния файл е: <номер на върха>, <дълбочина на върха>.
+TreeNode
+Represents a node in the tree with properties for the node number, parent, children, and additional information.
 
-Данните във файла са подредени по номер на върха в низходящ ред.
+Tree
+Manages the collection of TreeNode instances and provides methods to add nodes, find special nodes, print the tree structure, and verify the special nodes.
 
-Например: 6,4 и 778,3 са два върха отговарящи на условието на задачата и могат да бъдат намерени в output.txt.
+TreeStructure
+Handles reading from the input file and writing to the output file.
+
+Main
+Contains the main method to run the project, orchestrating the reading, processing, and writing steps.
+
+Usage:
+
+Step 1: Prepare the Input File
+Ensure that treeData.txt is located in the src/main/resources/ directory. This file should contain lines formatted as:
+<number of node>,<number of parent node>,<additional info>
+
+Step 2: Compile the Project
+Compile the Java project using your preferred IDE or the command line.
+
+Step 3: Run the Project
+Run the Main class. The project will:
+
+   1. Read the input file to build the tree structure.
+   2. Identify special nodes that meet the condition (nodes with at least one child and all their children are leaves).
+   3. Write the special nodes and their depths to output.txt.
+   4. Print the full tree structure to the console.
+
+Example Main.java Output:
+INFO: Reading input file...
+INFO: Finding special nodes...
+INFO: Writing output file...
+INFO: Process completed successfully.
+INFO: Tree structure:
+INFO: Full tree structure:
+...
+INFO: Verifying special nodes...
+INFO: Node X meets the condition.
+INFO: Verification completed.
+
+Full Tree Structure
+The full tree structure will be printed to the console with each node and its hierarchical relationships.
+
+Step 4: Verify Output
+Check the output.txt file in the src/main/resources/ directory to ensure it contains the correct special nodes and their depths.
+
+Example output.txt
+274,3
+120,3
+96,2
+94,2
+89,3
+78,3
+15,3
+6,4
+
+Logging
+
+The project uses java.util.logging for detailed logging of the processing steps. 
+Logs include information about adding nodes, verifying special nodes, and potential issues.
+
+Acknowledgments
+
+  - Developed using Java and the java.util.logging library.
+  - Created on IntelliJ IDEA community edition.
